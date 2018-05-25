@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Invoice</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Invoices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Discount Code --></label>
+        <name>Discount_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice State --></label>
+        <name>Invoice_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Street 1 --></label>
+        <name>Invoice_Street_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Zip --></label>
+        <name>Invoice_Zip__c</name>
+    </fields>
+    <fields>
+        <label><!-- Products --></label>
+        <name>Products__c</name>
+    </fields>
+    <fields>
+        <label><!-- invoice City --></label>
+        <name>invoice_City__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

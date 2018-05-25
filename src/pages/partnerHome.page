@@ -1,0 +1,175 @@
+<apex:page showHeader="false" sidebar="false" controller="PartnerHomeController">
+<style>
+    #blanket {
+        background-color:#111;
+        opacity: 0.65;
+        filter:alpha(opacity=65);
+        position:absolute;
+        z-index: 9001;
+        top:0px;
+        left:0px;
+        width:100%;
+    }
+    #popUpDiv {
+        position:absolute;
+        background-color:#eeeeee;
+        top: 100px;
+        left:1%;
+        width:350px;
+        height:340px;
+        z-index: 9002;
+        overflow:auto;
+        padding:10px;
+    }
+</style>
+<apex:includeScript value="{!URLFOR($Resource.partnerResources, 'popup.js')}"/>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+  <apex:stylesheet value="{!URLFOR($Resource.partnerResources, 'partnerCSS.css')}"/>
+</head>
+<body>
+
+    <div id="blanket" style="display:none;"></div>
+    <div id="popUpDiv" style="display:none;">
+        <div align="right"><apex:outputLink value="#" id="close" onclick="popup('popUpDiv')">Close</apex:outputLink></div>
+        <apex:form id="loginForm" forceSSL="true">
+            <apex:outputPanel layout="block">
+              <apex:pageMessages id="error"/>
+              <apex:panelGrid columns="2" style="margin-top:1em;">
+                <apex:outputLabel value="{!$Label.site.username}" for="username"/>
+                <apex:inputText id="username" value="{!username}"/>
+                <apex:outputLabel value="{!$Label.site.password}" for="password"/>
+                <apex:inputSecret id="password" value="{!password}"/>
+                <apex:outputText value=""/>
+                <apex:commandButton action="{!login}" value="{!$Label.site.login_button}" id="loginButton"/>
+                <apex:outputText value=""/>
+                <apex:outputText value=""/>
+                <apex:outputText value=""/>
+              </apex:panelGrid> 
+            </apex:outputPanel>
+          </apex:form>
+    </div>
+
+  <!-- Header and Nav -->
+
+  <div class="row">
+    <div class="three columns">
+      <h1><apex:image value="{!URLFOR($Resource.partnerResources, '/Images/sophos_logo_400px_rgb.png')}"/></h1>
+      <apex:outputLink value="#" id="loginLink" onclick="popup('popUpDiv')" rendered="{!AND(ISPICKVAL($User.UserType,'Guest'), $Site.LoginEnabled)}">Login</apex:outputLink>
+      <apex:outputPanel rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}"><b>Salutations {!$User.FirstName}</b></apex:outputPanel>
+      &nbsp;<apex:outputLink value="{!$Site.Prefix}/secur/logout.jsp" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">[{!$Label.site.logout}]</apex:outputLink>
+    </div>
+    <div class="nine columns">
+    
+      <ul class="nav-bar right">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Stuff</a></li>
+        <li><a href="#">More Stuff</a></li>
+        <li style="background:#0030B1;color:#FFFFFF;"><apex:outputLink value="../home/home.jsp" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">Portal</apex:outputLink></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- End Header and Nav -->
+
+
+  <!-- First Band (Slider) -->
+  <!-- The Orbit slider is initialized at the bottom of the page by calling .orbit() on #slider -->
+
+  <div class="row">
+    <div class="twelve columns">
+      <div id="slider">
+          <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/sophos_large.jpg')}"/>
+          <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/astaro_red.jpg')}"/>
+          <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/code.jpg')}"/>
+          <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/cybercrime.png')}"/>
+      </div>
+
+      <hr />
+    </div>
+  </div>
+
+
+  <!-- Three-up Content Blocks -->
+
+  <div class="row">
+
+    <div class="four columns">
+      <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/product2.png')}"/>
+      <h4>News</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+
+    <div class="four columns">
+      <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/product2.png')}"/>
+      <h4>Promotions</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+
+    <div class="four columns">
+      <apex:image value="{!URLFOR($Resource.partnerResources, '/Images/product2.png')}"/>
+      <h4>Press</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+
+  </div>
+
+
+  <!-- Call to Action Panel -->
+  <div class="row">
+    <div class="twelve columns">
+
+      <div class="panel">
+        <h4>Get in touch!</h4>
+
+        <div class="row">
+          <div class="nine columns">
+            <p>We'd love to hear from you, you attractive person you.</p>
+          </div>
+          <div class="three columns">
+            <a href="#" class="radius button right">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="six columns">
+          <ul class="inline-list right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Stuff</a></li>
+            <li><a href="#">More Stuff</a></li>
+            <li><apex:outputLink rendered="{!AND(ISPICKVAL($User.UserType,'Guest'), $Site.LoginEnabled)}">Login</apex:outputLink>
+            <apex:outputLink rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">Logout</apex:outputLink></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Included JS Files -->
+  <apex:includeScript value="{!URLFOR($Resource.partnerResources, 'partnerJS.js')}"/>
+
+  <script type="text/javascript">
+     $(window).load(function() {
+         $('#slider').orbit();
+     });
+  </script>
+  </body>
+  </html>
+</apex:page>

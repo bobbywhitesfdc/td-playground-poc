@@ -1,0 +1,47 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page standardController="Lead" extensions="PFAInsertShowLeadsController"> 
+<apex:form >
+
+<apex:pageMessages />
+
+
+<apex:pageBlock >
+<apex:pageBlockButtons >
+<apex:commandButton action="{!saveandnew}" value="Insert" rerender="theRecentLeads" status="status"/>
+
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection >
+<apex:inputField value="{!Lead.FirstName}"/>
+<apex:inputField value="{!Lead.LastName}"/>
+<apex:inputField value="{!Lead.Company}"/>
+<apex:inputfield value="{!Lead.Status}"/>
+<apex:inputfield value="{!Lead.City}"/>
+
+
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+
+<apex:actionStatus id="status" Starttext="Partial Page Refreshing..." />
+
+<apex:pageBlock title="Recently Created Leads" >
+    <apex:pageBlockTable value="{!leads}" var="l" id="theRecentLeads">
+        <apex:column value="{!l.Name}"/>
+        <apex:column value="{!l.Company}"/>
+        <apex:column value="{!l.Name}"/>
+        <apex:column value="{!l.Status}"/>
+        <apex:column value="{!l.CreatedDate}"/>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+
+ 
+
+
+</apex:form>  
+</apex:page>

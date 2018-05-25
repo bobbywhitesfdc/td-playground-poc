@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Academy Prework</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Academy Prework</value>
+    </caseValues>
+    <fields>
+        <label><!-- Content Link --></label>
+        <name>Content_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content_Status --></label>
+        <name>Content_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exercise Link --></label>
+        <name>Exercise_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exercise Status --></label>
+        <name>Exercise_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pct Complete --></label>
+        <name>Pct_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verified by Professor</masterLabel>
+            <translation><!-- Verified by Professor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subject Area --></label>
+        <name>Subject_Area__c</name>
+        <picklistValues>
+            <masterLabel>Apex &amp; Visualforce</masterLabel>
+            <translation><!-- Apex &amp; Visualforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Design</masterLabel>
+            <translation><!-- Application Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment &amp; Release Management</masterLabel>
+            <translation><!-- Deployment &amp; Release Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integration</masterLabel>
+            <translation><!-- Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Data Volumes</masterLabel>
+            <translation><!-- Large Data Volumes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portals</masterLabel>
+            <translation><!-- Portals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sharing Model &amp; Security</masterLabel>
+            <translation><!-- Sharing Model &amp; Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Sign On</masterLabel>
+            <translation><!-- Single Sign On --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Video Recording Link --></label>
+        <name>Video_Recording_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Status --></label>
+        <name>Video_Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

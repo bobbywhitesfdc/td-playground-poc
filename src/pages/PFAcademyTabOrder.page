@@ -1,0 +1,21 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page standardcontroller="Account">
+<apex:form >
+  <apex:pageBlock >
+    <apex:pageBlockButtons > 
+      <apex:commandButton value="Save" action="{!save}"/>
+      <apex:commandButton value="Cancel" action="{!cancel}"/>
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection >
+     
+      <apex:inputText value="{!account.Name}" tabIndex="1"/>
+      <apex:inputField value="{!account.Phone}" tabOrderHint="2"/>
+      <apex:inputText value="{!account.TickerSymbol}" tabIndex="21"/>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,22 @@
+<!--
+Chad S Kelly & Prakash Ramaswamy 
+March 2013
+-->
+
+<apex:page cache="false"
+  standardStylesheets="false"
+  showHeader="false"
+  sidebar="false">
+
+<!-- this empty page simply invokes the template example  -->
+<apex:composition template="PFATemplateExample">
+  <apex:define name="body"></apex:define>
+  <!-- define tags replace the pre-defined areas of the template with whatever custom content you'd like  -->
+  <apex:define name="left_header">This is where we would customize sidebar header</apex:define>  
+  <apex:define name="left_sidebar">This is where we would put left sidebar stuff</apex:define>  
+  <apex:define name="content_header">This is the title of some content</apex:define>  
+  <apex:define name="content_main">Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</apex:define>
+</apex:composition>
+
+
+</apex:page>

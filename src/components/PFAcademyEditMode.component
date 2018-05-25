@@ -1,0 +1,9 @@
+<apex:component controller="PFAcademyComponentController">
+    <apex:attribute name="value" type="String" description="Sample component."
+        assignTo="{!selectedValue}"/>
+    <p>
+    Value = {!value}<br/>
+    selectedValue = {!selectedValue}<br/>
+    EditMode = {!EditMode}
+    </p>
+</apex:component>

@@ -1,0 +1,19 @@
+<apex:page controller="PFAcademyViewStateEx2Soln" readOnly="true">
+	<apex:form id="AccountGrid">
+		<apex:pageBlock >
+			<apex:dataTable value="{!accts}" var="acct">
+				<apex:repeat value="{!fields}" var="field">
+					<apex:column >
+						<apex:inputfield value="{!acct[field]}" />
+					</apex:column>
+				</apex:repeat>
+			</apex:dataTable>
+		</apex:pageBlock>
+		<apex:panelGrid columns="2">
+			<apex:commandLink action="{!previous}" rendered="{!hasPrevious}"
+				rerender="AccountGrid">Previous</apex:commandlink>
+				<apex:commandLink action="{!next}" rendered="{!hasNext}"
+					rerender="AccountGrid">Next</apex:commandlink>
+		</apex:panelGrid>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,98 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page cache="false"
+  standardStylesheets="false"
+  showHeader="false"
+  sidebar="false"
+  standardController="Case">
+<html>
+
+<head>
+  <c:PFA_Template_CSS />
+  <apex:outputText rendered="true">
+    
+  </apex:outputText>
+</head>
+
+<body>
+
+
+
+<!--  Header -->
+
+<div id="header">
+<span style="margin-left: 5px;">
+    <apex:image value="{!$Resource.pkb_logo}" />
+</span>
+</div>
+
+
+<!-- Sidebar -->
+<div id="body">
+
+    <div id="left_column">
+        <div id="leftHeader" style="height: 110px;"><apex:insert name="left_header">This is the sidebar header</apex:insert></div>
+        
+        <div id="immediateHelp" style="text-align: right; font-weight: bold; font-size: 110%; padding-top: 12px;">
+        <apex:insert name="left_sidebar">
+        Left Sidebar  
+    
+        </apex:insert>
+        </div>
+    
+    </div>
+    
+
+  <!-- Main Content -->
+
+    <div id="right_column">
+    <div id="rightHeader" style="height: 106px;">
+    <apex:insert name="content_header">
+    Content Header    
+    </apex:insert></div>
+    
+    
+      <div id="right_content">
+    
+        <apex:outputText rendered="true">
+          <apex:outputText rendered="true">
+    
+          </apex:outputText>
+    
+          <apex:outputText rendered="true">
+            <div id="articleView" >
+            <apex:insert name="content_main">
+              Main Content
+            </apex:insert>
+            </div>
+          </apex:outputText>
+        </apex:outputText>
+    
+    
+      </div>
+    
+    </div>
+    
+    <div style="clear: both;"></div>
+    </div>
+  
+  
+  <!-- Footer -->
+
+  <div id="footer">
+    <apex:outputPanel styleClass="pkbPoweredBySFDC" style="float: right;">
+      <a href="http://www.salesforce.com/">www.salesforce.com
+      <apex:outputPanel styleClass="pkbPoweredBySFDCText">salesforce.com</apex:outputPanel></a>
+    </apex:outputPanel>
+  </div>
+
+</body>
+
+</html>
+<!--
+<site:previewAsAdmin />
+-->
+</apex:page>

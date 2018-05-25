@@ -1,0 +1,62 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page cache="false"
+  standardStylesheets="false"
+  showHeader="false"
+  sidebar="false">
+<apex:form >
+<!-- this empty page simply invokes the template example  -->
+<apex:composition template="PFATemplateExample">
+  <apex:define name="body"></apex:define>
+  <!-- define tags replace the pre-defined areas of the template with whatever custom content you'd like  -->
+  <apex:define name="left_header"></apex:define>  
+  <apex:define name="left_sidebar">Salesforce Services Platform Academy</apex:define>  
+  <apex:define name="content_header">Examples and Demos</apex:define>  
+  <apex:define name="content_main">
+  
+<apex:pageBlock >
+<apex:pageBlockSection columns="1" title="Apex">
+  <apex:outputLink value="{!$Page.PFAPartialPageRefreshV2}">Partial Page Refresh Example</apex:outputLink>
+  <apex:outputLink value="{!$Page.PFAInsertShowLeads}">Partial Page Refresh Exercise</apex:outputLink>  
+  <apex:outputLink value="{!$Page.PFASearchContacts}">Dynamic SOQL Query Example</apex:outputLink>
+  <apex:outputLink value="{!$Page.PFAcademyViewStateVF}">View State Exercise</apex:outputLink>
+  <apex:outputLink value="{!$Page.PFAcademyViewStateEx2}">View State Exercise 2</apex:outputLink>  
+  <apex:outputLink value="{!$Page.PFAcademyViewStateEx2Soln}">View State Exercise 2 Solution</apex:outputLink>
+  
+  
+    
+  
+  
+  <apex:outputLink value="{!$Page.PFAMassUpdateCase}">The Standard Set Contoller, DML and For Loops</apex:outputLink>
+  <apex:outputLink value="{!$Page.PFAcademyBulkDMLDemo}">DML Bulkification Demonstration</apex:outputLink>
+</apex:pageBlockSection>
+
+<br/>
+<apex:pageBlockSection columns="1" title="Exception Handling">
+    <apex:outputLink value="{!$Page.PFAExceptionHandling}">Visualforce and Apex Exception Handling</apex:outputLink>
+    <apex:outputLink value="{!$Page.PFAcademyVFLifeCycle}">Visualforce Life Cycle</apex:outputLink>
+</apex:pageBlockSection>
+
+<br/>
+<apex:pageBlockSection columns="1" title="Visualforce">
+    <apex:outputLink value="{!$Page.PFAcademyTabOrder}">Tab Order</apex:outputLink>
+    <apex:outputLink value="{!$Page.PFAInkoveTemplate}">Customization Using Templates Exercise</apex:outputLink>
+    <apex:outputLink value="{!$Page.PFATemplateExample}">Template Example</apex:outputLink>      
+</apex:pageBlockSection>
+
+
+
+<br/>
+<apex:pageBlockSection columns="1" title="The Art of Possible">
+  <apex:outputLink value="{!$Page.PFASearchContacts}">Contact Search</apex:outputLink>
+</apex:pageBlockSection>
+</apex:pageBlock>  
+      
+  </apex:define>
+</apex:composition>
+
+</apex:form>
+</apex:page>

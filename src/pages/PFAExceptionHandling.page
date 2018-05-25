@@ -1,0 +1,27 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy 
+March 2013
+-->
+
+<apex:page standardController="Case" extensions="PFAExceptionHandling" action="{!ProcessSomething}" >
+    <apex:pageMessages />
+    <apex:form id="theForm" >
+        
+        <div style="border: thin dotted #FF0000; padding:25px 50px;">  
+        <apex:detail subject="{!case.Id}" relatedList="false"/>
+        </div>
+
+        <br></br>
+
+        <div style="border: thin dotted #FF0000; padding:25px 50px;">        
+        <apex:detail subject="{!contactId}" relatedList="false"/>
+        </div>  
+        
+         <br></br>   
+        
+        <!--TODO: uncomment this line and observe that accountId is not visible examine the class and determine why this is
+                <apex:detail subject="{!accountId}" relatedList="false"/>
+        <apex:outputText id="theAccount" value=""/>  -->
+        
+    </apex:form>
+   </apex:page>

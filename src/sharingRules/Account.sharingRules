@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pacific_NW_ALl</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Pacific NW ALl</label>
+        <sharedTo>
+            <group>Pacific_NW_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Access__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branch__c</field>
+            <operation>equals</operation>
+            <value>Pacific Northwest</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pacific_NW_Government</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Pacific NW Government</label>
+        <sharedTo>
+            <group>Pacific_NW_Government</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Access__c</field>
+            <operation>equals</operation>
+            <value>2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branch__c</field>
+            <operation>equals</operation>
+            <value>Pacific Northwest</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

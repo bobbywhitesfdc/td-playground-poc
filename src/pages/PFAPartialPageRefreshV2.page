@@ -1,0 +1,48 @@
+<!--
+Chad S Kelly & Prakash Ramaswamy 
+March 2013
+-->
+
+<apex:page Controller="PFAPartialPageRefreshV2">
+    <apex:pageBlock title="Accounts">
+    <apex:outputPanel id="resultsPanel">
+        <apex:form >
+
+
+            <!-- The page block is bound to the 'acts' object which is delivered with the standard set controller -->
+            <apex:pageBlockTable value="{!acts}" var="account" rendered="{!renderResults}">
+                <apex:column >
+                <apex:facet name="header">Account Name</apex:facet>
+                <apex:commandLink rerender="detail"> {!account.Name}<apex:param name="cid" value="{!account.id}"/></apex:commandLink>
+                    <!--<apex:outputLink value="{!account.id}">{!account.name} </apex:outputLink>-->
+                </apex:column>
+                <apex:column >
+                <apex:facet name="header">City</apex:facet>
+                <apex:outputfield value="{!account.billingCity}"/>
+                </apex:column>
+                 <apex:column >
+         
+                <apex:facet name="header">State</apex:facet>
+                <apex:outputfield value="{!account.billingState}"/>
+                </apex:column>
+  
+                <apex:column >
+
+                    <apex:facet name="header">Created Date</apex:facet>
+                    <apex:outputfield value="{!account.CreatedDate}"/>
+                </apex:column>
+                `                
+            </apex:pageBlockTable>
+                
+                <!--Reusable Pagination Component can be used accross multiple visualforce pages--->
+                <c:DynamicPaginator DynamicListController="{!controller}"/>
+
+
+        </apex:form>
+        </apex:outputPanel>
+    </apex:pageBlock>
+    <apex:outputPanel id="detail" > 
+        <!-- Use of detail tag retains declarative page layout maintainance functionality -->
+        <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" title="false" inlineEdit="true"/>
+    </apex:outputPanel> 
+</apex:page>

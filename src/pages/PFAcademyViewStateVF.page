@@ -1,0 +1,32 @@
+<!--
+Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page controller="PFAcademyViewStateCtrl">
+<apex:form >
+  <apex:dataTable value="{!accounts}"
+                    var="account"
+                    cellPadding="4" border="1">
+      <apex:column >
+        {!account.Id}
+      </apex:column>
+      <apex:column >
+        {!account.Name}
+      </apex:column>
+      <apex:column >
+        {!account.Industry}
+      </apex:column>
+      <apex:column >
+        {!account.Phone}
+      </apex:column>
+      <apex:column >
+        {!account.Rating}
+      </apex:column>
+    </apex:dataTable>
+    
+    <apex:repeat value="{!moreThanThousandVal}" var="sampleValue">
+      The sample value is : {!sampleValue}
+    </apex:repeat>
+   </apex:form>
+</apex:page>

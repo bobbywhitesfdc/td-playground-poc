@@ -1,0 +1,43 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page controller="PFAcademyOEVFController" tabStyle="Account" extensions="PFAcademyVFLifecycle" action="{!resetEmp}">
+    <apex:messages />
+    <apex:pageBlock title="{!greeting}">
+        <apex:outputLabel value="{!$ObjectType.account.fields.Name.label}: " 
+                          for="acctName"/>
+        <apex:outputField value="{!account.name}" id="acctName"/>
+        <br/>
+        <apex:outputLabel value="{!$ObjectType.account.fields.NumberOfEmployees.label}: "
+              for="emps"/>
+        <apex:outputField value="{!account.NumberOfEmployees}" id="emps"/>
+        <br/>
+    </apex:pageBlock>
+    <apex:pageBlock title="Variable values">
+        <c:PFAcademyEditMode value="{!$CurrentPage.parameters.key}"/>
+    </apex:pageBlock>
+    <apex:form rendered="{!$CurrentPage.parameters.key = 'true'}">
+        <apex:pageBlock title="Update the Account" id="thePageBlock">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField id="aName" value="{!account.name}"/>
+                <apex:inputField value="{!account.NumberOfEmployees}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.account.fields.Industry.label}"
+                        for="acctIndustry"/>
+                    <apex:actionRegion >
+                        <apex:inputField value="{!account.Industry}" id="acctIndustry">
+                            <apex:actionSupport event="onchange" rerender="thePageBlock"
+                                status="status"/>
+                        </apex:inputField>
+                    </apex:actionRegion>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,27 @@
+<!--
+Chad S Kelly & Prakash Prakash Ramaswamy
+March 2013
+-->
+
+<apex:page standardController="Case" recordSetVar="case" extensions="PFADMLBulkificationController">
+<apex:form >
+
+    
+    <apex:pageBlock id="step3" title="Update Case Status" mode="edit">
+    <apex:pagemessages escape="false"></apex:pagemessages>
+    
+    <apex:pageBlockSection >
+    <apex:selectList id="pickList" size="1" value="{!selectedStatus}" required="true">
+    <apex:selectOptions value="{!CaseStatus}"/>
+    </apex:selectList>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockButtons >
+    <apex:commandButton action="{!StartUpdate}" value="Update"/>
+    <apex:commandButton action="{!cancel}" value="Close and Return" immediate="true" style="margin-left: 2em"/>
+    </apex:pageBlockButtons>
+    </apex:pageBlock>           
+    
+
+</apex:form>        
+</apex:page>

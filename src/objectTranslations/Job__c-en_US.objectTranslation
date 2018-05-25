@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Jobs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Hiring Manager --></label>
+        <name>Hiring_Manager__c</name>
+        <relationshipLabel><!-- Jobs (Hiring Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recruiter --></label>
+        <name>Recruiter__c</name>
+        <relationshipLabel><!-- Jobs (Recruiter) --></relationshipLabel>
+    </fields>
+    <sharingReasons>
+        <label><!-- Hiring Manager --></label>
+        <name>Hiring_Manager</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Recruiter --></label>
+        <name>Recruiter</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- test --></label>
+        <name>test</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

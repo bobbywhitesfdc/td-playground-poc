@@ -1,0 +1,24 @@
+<apex:page controller="PFAcademyBulkDML">
+  <apex:form >
+     <apex:pageBlock title="Bulk Account Examples">
+       <apex:pageBlockSection >
+          <apex:commandButton value="Update Accounts Scenario 1" action="{!updateAccounts}"/>
+	   </apex:pageBlockSection>
+       
+       <apex:pageBlockSection >
+         <apex:commandButton value="Update Accounts Scenario 2" action="{!updateBulkAccounts}"/>
+       </apex:pageBlockSection>
+     </apex:pageBlock>
+     
+     <apex:pageBlock title="Asynchronous Examples">
+       <apex:pageBlockSection >
+          <apex:commandButton value="Update Accounts Scenario 3 (Async)" action="{!processAsyncAccounts}"/>
+	   </apex:pageBlockSection>
+       
+       <apex:pageBlockSection >
+         <apex:commandButton value="Update Accounts Scenario 4(Async)" action="{!processAsyncAccountsv2}"/>
+       </apex:pageBlockSection>
+     </apex:pageBlock>
+	  
+  </apex:form>
+</apex:page>
