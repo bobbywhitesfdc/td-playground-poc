@@ -463,6 +463,13 @@
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Amount_Greater_than_0</fullName>
+        <active>true</active>
+        <errorConditionFormula>Amount &lt; 1 &amp;&amp; ISNEW()</errorConditionFormula>
+        <errorDisplayField>Amount</errorDisplayField>
+        <errorMessage>Opportunity Amount should be greater than 0</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Prevent_Line_Deletion</fullName>
         <active>true</active>
         <description>Prevents users from deleting opportunity products after an opportunity is closed. Create the following validation rule example on opportunities. It uses a custom roll-up summary field on opportunities that counts the number of   opportunity products</description>
