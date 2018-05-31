@@ -12,8 +12,10 @@
 */
 public class MyClass{
    
+   integer i=0;
    public MyClass(){
-   
+       i=11;
    }
+
 
 }
