@@ -12,10 +12,8 @@
 */
 public class MyClass{
    
-   integer i=0;
    public MyClass(){
-       i=11;
+       System.debug('Inside test class');
    }
-
 
 }
