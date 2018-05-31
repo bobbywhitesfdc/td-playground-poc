@@ -13,7 +13,7 @@
 public class MyClass{
    
    public MyClass(){
-   
+       System.debug('Inside test class');
    }
 
 }
