@@ -207,6 +207,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>SSN_Number__c</fullName>
+        <description>Field to capture SSN</description>
+        <externalId>false</externalId>
+        <label>SSN Number</label>
+        <length>11</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Title</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
