@@ -149,6 +149,15 @@
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
+        <fullName>Is_SSN_Populated__c</fullName>
+        <description>Formula to identify if SSN is populated</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(SSN_Number__c),false,true)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is SSN Populated ?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Jigsaw</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
