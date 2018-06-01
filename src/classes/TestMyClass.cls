@@ -15,6 +15,7 @@ private class TestMyClass{
 
     static testMethod void myTestMthod(){
        MyClass cl = new MyClass();
+       // Arun B added comment to test merge
     }
 
 }
