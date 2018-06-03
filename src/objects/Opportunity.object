@@ -467,7 +467,7 @@
         <active>true</active>
         <errorConditionFormula>Amount &lt; 1 &amp;&amp; ISNEW()</errorConditionFormula>
         <errorDisplayField>Amount</errorDisplayField>
-        <errorMessage>changes after Commit button is clicked</errorMessage>
+        <errorMessage>changes after Deployed into SIT</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Prevent_Line_Deletion</fullName>
