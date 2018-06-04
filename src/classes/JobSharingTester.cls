@@ -1,11 +1,31 @@
 @isTest
 private class JobSharingTester {
-  
+      
     // Test for the JobSharingRecalc class        
-    static testMethod void testApexSharing(){
-       // Instantiate the class implementing the Database.Batchable interface.    
+    public static testMethod void testApexSharingPos(){
+        runSharingScenario(false);
+    }
+    public static testMethod void testApexSharingNeg() {
+        runSharingScenario(true);
+    }
+    
+    public static testMethod void testSendEmail() {
+        final String TEST_SUBJECT='MyErrorSubject';
+        final String TEST_MESSAGE='MyErrorMessageBody';
+        
         JobSharingRecalc recalc = new JobSharingRecalc();
-       
+        
+        Messaging.SingleEmailMessage mail = recalc.sendErrorEmail(TEST_SUBJECT,TEST_MESSAGE);
+        
+        System.assert(mail!=null);
+        System.assertEquals(mail.subject,TEST_SUBJECT);
+        System.assertEquals(mail.plainTextBody,TEST_MESSAGE);
+        System.assertNotEquals(mail.toAddresses.size(),0,'To Addresses must not be empty!');
+        
+    }
+    
+    @testSetup
+    private static void setup() {
         // Select users for the test.
         List<User> users = [SELECT Id FROM User WHERE IsActive = true LIMIT 2];
         ID User1Id = users[0].Id;
@@ -21,11 +41,53 @@ private class JobSharingTester {
             testJobs.add(j);
         }
         insert testJobs;
-       
+         
+    }
+    
+    private static User createTestUser() {
+                
+        Profile theProfile = [SELECT Id from Profile Where Name='Sales User']; 
+        
+        User myTestUser = new User(FirstName='Test'
+                           ,LastName='User'
+                           ,Email='test@example.com'
+                           ,Username='testuser@example.com.test'
+                           ,CommunityNickname='testuser'
+                           ,Alias='testu'
+                           ,TimeZoneSidKey='America/New_York'
+                           ,LocaleSidKey='en_US'
+                           ,EmailEncodingKey='ISO-8859-1'
+                           ,LanguageLocaleKey='en_US'
+                           ,ProfileId=theProfile.id);
+        insert myTestUser; 
+        
+        User testUser = [SELECT Id,Name,Username,Email From User where Alias='testu' LIMIT 1];
+        return testUser;
+    }
+    
+    private static void runSharingScenario(boolean lockRecords) {
+               // Instantiate the class implementing the Database.Batchable interface.    
+        JobSharingRecalc recalc = new JobSharingRecalc();
+              
         Test.startTest();
+        
        
+       String jobId='';
+       User testUser = createTestUser();
+       System.debug(testUser == null ? ' Test User is null ' : 'Test User is: ' + testUser.username);
+       
+       List<Job__Share> shares = null;
+       
+       // Simulate a Lock on all of the Sharing Records
+       if (lockRecords) {
+        shares= [SELECT Id,AccessLevel,RowCause 
+                  From Job__Share FOR UPDATE];
+       }
+       
+       System.runAs(testUser) {
         // Invoke the Batch class.
-        String jobId = Database.executeBatch(recalc);
+        jobId = Database.executeBatch(recalc);
+       }
        
         Test.stopTest();
        
@@ -33,7 +95,9 @@ private class JobSharingTester {
         AsyncApexJob aaj = [Select JobType, TotalJobItems, JobItemsProcessed, Status,
                             CompletedDate, CreatedDate, NumberOfErrors
                             from AsyncApexJob where Id = :jobId];
-        System.assertEquals(0, aaj.NumberOfErrors);
+                            
+        if (!lockRecords)  {                   
+           System.assertEquals(0, aaj.NumberOfErrors);
      
         // This query returns jobs and related sharing records that were inserted               
         // by the batch job's execute method.    
@@ -62,5 +126,7 @@ private class JobSharingTester {
                 }
             }
         }
+        }
+        
     }
 }

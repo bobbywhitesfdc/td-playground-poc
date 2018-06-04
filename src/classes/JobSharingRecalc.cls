@@ -1,5 +1,8 @@
 global class JobSharingRecalc implements Database.Batchable<sObject> {
     
+    public static final String MSG_SHARECALC_EX = 'Apex Sharing Recalculation Exception';
+    public static final String MSG_SHARINGRECALC_COMPLETED = 'Apex Sharing Recalculation Completed.';
+    
     // String to hold email address that emails will be sent to. 
     // Replace its value with a valid email address.
     static String emailAddress = 'admin@yourcompany.com';
@@ -14,6 +17,7 @@ global class JobSharingRecalc implements Database.Batchable<sObject> {
     
     // The executeBatch method is called for each chunk of records returned from start.  
     global void execute(Database.BatchableContext BC, List<sObject> scope){
+        System.debug('Records in Batch=' + scope.size());
        // Create a map for the chunk of records passed into method.
         Map<ID, Job__c> jobMap = new Map<ID, Job__c>((List<Job__c>)scope);  
         
@@ -89,42 +93,37 @@ global class JobSharingRecalc implements Database.Batchable<sObject> {
                    // is acceptable. 
                    if(!(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION  
                                      &&  err.getMessage().contains('AccessLevel'))){
-                       // Error is not related to trivial access level.
-                       // Send an email to the Apex job's submitter.
-                     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                     String[] toAddresses = new String[] {emailAddress}; 
-                     mail.setToAddresses(toAddresses); 
-                     mail.setSubject('Apex Sharing Recalculation Exception');
-                     mail.setPlainTextBody(
-                       'The Apex sharing recalculation threw the following exception: ' + 
-                             err.getMessage());
-                     Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+                        sendErrorEmail(MSG_SHARECALC_EX, err.getMessage());
                    }
                }
            }   
         } catch(DmlException e) {
-           // Send an email to the Apex job's submitter on failure.
-            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            String[] toAddresses = new String[] {emailAddress}; 
-            mail.setToAddresses(toAddresses); 
-            mail.setSubject('Apex Sharing Recalculation Exception');
-            mail.setPlainTextBody(
-              'The Apex sharing recalculation threw the following exception: ' + 
-                        e.getMessage());
-            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+          sendErrorEmail(MSG_SHARECALC_EX,e.getMessage());
         }
+
     }
     
     // The finish method is called at the end of a sharing recalculation.
-    global void finish(Database.BatchableContext BC){  
-        // Send an email to the Apex job's submitter notifying of job completion.
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        String[] toAddresses = new String[] {emailAddress}; 
-        mail.setToAddresses(toAddresses); 
-        mail.setSubject('Apex Sharing Recalculation Completed.');
-        mail.setPlainTextBody
-                      ('The Apex sharing recalculation finished processing');
-        Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+    global void finish(Database.BatchableContext BC){
+        sendErrorEmail(MSG_SHARINGRECALC_COMPLETED,MSG_SHARINGRECALC_COMPLETED);
+    }
+    
+    public Messaging.SingleEmailMessage sendErrorEmail(String subject, String messageTxt) {
+        // Attempt to send the message, but if Email delivery is disabled, just log it
+       Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+       String[] toAddresses = new String[] {emailAddress}; 
+       mail.setToAddresses(toAddresses); 
+       mail.setSubject(subject);
+       mail.setPlainTextBody(messageTxt);
+       try {
+
+          Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+       } catch (System.EmailException mailEx) {
+          System.debug(messageTxt + ' email disabled'); 
+       }
+       
+       return mail;
+        
     }
     
 }

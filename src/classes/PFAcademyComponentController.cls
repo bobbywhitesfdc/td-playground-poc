@@ -10,7 +10,10 @@ public with sharing class PFAcademyComponentController {
             selectedValue = value;
         }
     }
-    public Boolean editMode {get; private set;}
+    public Boolean editMode {
+        get { return (editMode == null ? false : editMode); }
+        private set;
+    }
  
 
 }
