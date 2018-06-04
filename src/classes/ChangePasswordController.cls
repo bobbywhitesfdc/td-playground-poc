@@ -1,5 +1,12 @@
 /**
  * An apex page controller that exposes the change password functionality
+ 
+ Refactored to remove Unit test from this implementation class to it's own
+ stand alone class  and shan added his play
+ 
+ @author Bobby.White
+ @company Salesforce.com
+ 
  */
 public with sharing class ChangePasswordController {
     public String oldPassword {get; set;}
@@ -10,15 +17,5 @@ public with sharing class ChangePasswordController {
         return Site.changePassword(newPassword, verifyNewPassword, oldpassword);    
     }     
     
-   	public ChangePasswordController() {}
-    
-   	@IsTest(SeeAllData=true) public static void testChangePasswordController() {
-        // Instantiate a new controller with all parameters in the page
-        ChangePasswordController controller = new ChangePasswordController();
-        controller.oldPassword = '123456';
-        controller.newPassword = 'qwerty1'; 
-        controller.verifyNewPassword = 'qwerty1';                
-        
-        System.assertEquals(controller.changePassword(),null);                           
-    }    
-}
+    public ChangePasswordController() {}
+ }
