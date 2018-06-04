@@ -1,6 +1,6 @@
 public with sharing class PFAcademyBulkDML {
 	
-	@future
+//Remove the @future here, we can't nest @Future calls!
 	static void processOrCreateContacts(Map<Id,String> accountNameIdMap){
 		List<Contact> contactList=new List<Contact>();
 		for(String accountId:accountNameIdMap.keySet()){
