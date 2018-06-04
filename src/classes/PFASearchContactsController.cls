@@ -38,24 +38,13 @@ public with sharing class PFASearchContactsController {
       
       for(Contact c: contacts) {
                 // As each contact is processed we create a new cContact object and add it to the contactList
-                try{
                 contactList.add(new ContactWrapper(c));
-                }
-                catch (Exception e){       
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'UrrrgHHH!' + e));
-                }
-
         }        
+           
       
-    // for(Contact c : [select firstname, lastname, account.name, gender__c from contact where account.name != null limit 10]) {
-                // As each contact is processed we create a new cContact object and add it to the contactList
-    //            contactList.add(new ContactWrapper(c));
-    //        }
-      
-      
-    } catch (Exception e) {
-      ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Ooops!'));
-    }
+       } catch (Exception e) {
+        ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Ooops!'));
+       }
     } 
  
  
@@ -94,13 +83,14 @@ public with sharing class PFASearchContactsController {
     String firstName = Apexpages.currentPage().getParameters().get('firstname');
     String lastName = Apexpages.currentPage().getParameters().get('lastname');
     String accountName = Apexpages.currentPage().getParameters().get('accountName');
+    
  
     soql = 'select firstname, lastname, account.name from contact where account.name != null';
-    if (!firstName.equals(''))
+    if (firstName != null && !firstName.equals(''))
       soql += ' and firstname LIKE \''+String.escapeSingleQuotes(firstName)+'%\'';
-    if (!lastName.equals(''))
+    if (lastName !=null && !lastName.equals(''))
       soql += ' and lastname LIKE \''+String.escapeSingleQuotes(lastName)+'%\'';
-    if (!accountName.equals(''))
+    if (accountName != null && !accountName.equals(''))
       soql += ' and account.name LIKE \''+String.escapeSingleQuotes(accountName)+'%\'';  
  
     // run the query again
