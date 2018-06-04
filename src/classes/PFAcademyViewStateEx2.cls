@@ -1,3 +1,6 @@
+/**
+  This is standalone
+**/
 public with sharing class PFAcademyViewStateEx2 {
 	 transient list<Account> accts;
      transient list<String> fields;

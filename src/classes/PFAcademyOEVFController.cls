@@ -1,12 +1,15 @@
+/**
+ * PFAcademyOEVController
+ **/ 
 public with sharing class PFAcademyOEVFController {
  
-
+    public static final String ACCNUM_PARAM = 'Acc';
     private final Account account;
 
       public PFAcademyOEVFController() {
-            System.debug('===In the controller constructor====');
+            debugParams();
             account = [select id, AccountNumber, name, site, NumberOfEmployees, Industry from Account 
-                       where AccountNumber = :ApexPages.currentPage().getParameters().get('Acc')];
+                       where AccountNumber = :ApexPages.currentPage().getParameters().get(ACCNUM_PARAM)];
       }
 
       public Account getAccount() {
@@ -24,6 +27,12 @@ public with sharing class PFAcademyOEVFController {
             System.debug('===In the cancel Method====');
             return null;
       }
+    private void debugParams() {
+            System.debug('Parameters count=' + ApexPages.currentPage().getParameters().size());
+            for (String current : ApexPages.currentPage().getParameters().keySet()) {
+               System.debug('Param '+current + '=' + ApexPages.currentPage().getParameters().get(current));
+            }
 
+    }
 
 }
