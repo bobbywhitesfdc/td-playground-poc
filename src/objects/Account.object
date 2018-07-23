@@ -588,6 +588,13 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Sample_Account_Validation</fullName>
+        <active>true</active>
+        <description>For testing Copado</description>
+        <errorConditionFormula>PersonTitle == &apos;Employee&apos;</errorConditionFormula>
+        <errorMessage>Employee Accounts cannot be created</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>AltavistaNews</fullName>
         <availability>online</availability>
