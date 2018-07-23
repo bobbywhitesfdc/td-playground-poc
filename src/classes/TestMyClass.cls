@@ -1,6 +1,6 @@
 /* Description:
      * ============
-     *  Sample class created by Arun for Copado POC
+     *  Test class for MyClass
      *
      * Author:
      * ========
@@ -10,11 +10,11 @@
      * =================
      * 05/29/2018 - Initial development built
 */
-public class MyClass{
-   
-   public MyClass(){
-       System.debug('Inside test class');
-       System.debug('July 2018');
-   }
+@isTest
+private class TestMyClass{
+
+    static testMethod void myTestMthod(){
+       MyClass cl = new MyClass();
+    }
 
 }
