@@ -13,6 +13,7 @@
 public class MyUtilityClass{
    
    public MyUtilityClass(){
+       System.debug('Inside test class');
    }
 
 }
